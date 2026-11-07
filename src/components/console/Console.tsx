@@ -16,6 +16,7 @@ import { assignCharacters } from "@/lib/characters";
 import { cn } from "@/lib/utils";
 import { parseKb } from "@/lib/domain/kb";
 import Rules from "./Rules";
+import SetupCard from "./SetupCard";
 
 const TABS = ["Panel", "Görüşme", "Toplu demo", "Kurallar", "Müşteriler", "Kuryeler", "Karar akışı", "Mesajlar", "Planlar", "Kurum bilgisi", "Ayarlar"] as const;
 type Tab = (typeof TABS)[number];
@@ -73,6 +74,7 @@ export default function Console() {
           }}>↺ Demoyu sıfırla</Button>
         </div>
       </header>
+      <SetupCard h={h} onRetry={refresh} />
       <nav className="mb-4 flex flex-wrap gap-1">
         {TABS.map((t) => (
           <button key={t} onClick={() => go(t)} className={cn("rounded-lg px-3 py-1.5 text-sm", tab === t ? "bg-primary text-primary-foreground" : "hover:bg-muted")}>

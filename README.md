@@ -32,12 +32,12 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Asena canlı demo (`/demo`)
 
-Demo ekranı tarayıcıda çalışır; veri (müşteri, kurye, randevu, SMS) tarayıcının `localStorage`'ında tutulur. Web uygulaması için **env gerekmez**. Sesler (EMA Lightning, Antalia-2 Mini) ve model (Kumru-2B, Ollama) yalnız Mac'te çalışan **yerel motordan** gelir (`127.0.0.1:8787`).
+Demo ekranı tarayıcıda çalışır; veri (müşteri, kurye, randevu, SMS) tarayıcının `localStorage`'ında tutulur. Web uygulaması için **env gerekmez**. Vercel linki **kurulumsuz da çalışır**: motor yoksa kararlar kural + şablon cümlelerle verilir, sesler Chrome'un Türkçe sesiyle çalar. Motor (repodaki `engine/`) çalışırsa gerçek modeller devreye girer. Sesler (EMA Lightning, Antalia-2 Mini) ve model (Kumru-2B, Ollama) yalnız Mac'te çalışan **yerel motordan** gelir (`127.0.0.1:8787`).
 
 ### Lokal
 ```bash
 pnpm install && pnpm dev                                   # http://localhost:3000/demo
-cd ~/Desktop/Asena/engine && uv run asena-engine           # yerel motor
+cd engine && uv sync && uv run asena-engine                 # yerel motor (ilk seferde uv sync)
 ```
 Motorun terminale bastığı `http://localhost:3000/eslestir#t=…` bağlantısını açın.
 
@@ -45,7 +45,7 @@ Motorun terminale bastığı `http://localhost:3000/eslestir#t=…` bağlantıs�
 1. Repoyu Vercel'e bağlayıp build alın (env yok).
 2. Mac'te motoru canlı adrese izin vererek başlatın:
    ```bash
-   cd ~/Desktop/Asena/engine && ASENA_ALLOWED_ORIGINS=http://localhost:3000,https://<site>.vercel.app uv run asena-engine
+   cd ~/Projects/asena/engine && ASENA_ALLOWED_ORIGINS=http://localhost:3000,https://<site>.vercel.app uv run asena-engine
    ```
 3. `https://<site>.vercel.app/demo`'yu **Chrome**'da açın. Motor bağlı değilse sayfa bu komutları sitenin adresiyle hazır gösterir.
 4. Eşleştirme: terminaldeki `https://<site>.vercel.app/eslestir#t=…` bağlantısını açın **ya da** `cat ~/.asena/token | pbcopy` ile token'ı kopyalayıp sayfadaki kutuya yapıştırın.

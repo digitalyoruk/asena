@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import type { Health } from "@/lib/engine-client/client";
 import { app } from "@/lib/app";
 
-const ENGINE_DIR = "~/Desktop/Asena/engine";
+const ENGINE_DIR = "~/Projects/asena/engine";
 
 function Cmd({ cmd }: { cmd: string }) {
   const [ok, setOk] = useState(false);
@@ -64,10 +64,10 @@ export default function SetupCard({ h, onRetry }: { h: Health | { error: string 
   };
 
   return (
-    <section className="mb-4 rounded-xl border-2 border-amber-300 bg-amber-50 p-4 text-sm text-amber-950">
+    <section className="mb-4 rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950">
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <h2 className="font-semibold">
-          {unreachable ? "Yerel motora ulaşılamıyor — sesler ve model için Mac'te motoru başlatın" : unpaired ? "Motor çalışıyor ama bu site eşleşmemiş" : "Motor eşleşti, modeller hazırlanıyor"}
+          {unreachable ? "Demo motorsuz çalışıyor (kural + şablon cümleler, tarayıcının Türkçe sesi). Gerçek modeller (EMA, Antalia, Kumru) için Mac'te yerel motoru başlatın:" : unpaired ? "Motor çalışıyor ama bu site eşleşmemiş" : "Motor eşleşti, modeller hazırlanıyor"}
         </h2>
         <Button size="xs" variant="outline" onClick={onRetry}>Tekrar dene</Button>
         <a className="text-xs underline" href={`mailto:?subject=${encodeURIComponent("Asena demo kurulumu")}&body=${encodeURIComponent(mailBody)}`}>Talimatları e-postayla gönder</a>

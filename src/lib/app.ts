@@ -48,9 +48,11 @@ class Controller {
   subscribe = (l: () => void) => { this.listeners.add(l); return () => this.listeners.delete(l); };
   snapshot = () => this.version;
 
+  /** Console /health yoklamasından: motor erişilebilir ve eşleşmiş mi? Değilse demo motorsuz (kural + şablon + tarayıcı sesi) çalışır. */
+  engineHealthy = false;
   engineConf() {
     const s = this.repo.settings();
-    return s.engine.token ? s.engine : null;
+    return s.engine.token && this.engineHealthy ? s.engine : null;
   }
 
   // ------------------------------------------------------------------ tek görüşme
@@ -108,12 +110,14 @@ class Controller {
           rate: role === "asena" ? s.tts.rate : ark?.ses.rate ?? 1, pitch: role === "musteri" && s.tts.pitchVariety ? ark?.ses.pitch ?? 1 : 1, phone: s.tts.phoneFilter,
         });
         await new Promise((r) => setTimeout(r, s.behavior.turnGapMs));
+      } else if (s.listenMode === "stream") {
+        await browserSpeak(text, role, ark?.ses.rate ?? 1, ark?.ses.pitch ?? 1);
       } else {
-        await new Promise((r) => setTimeout(r, s.listenMode === "sessiz" ? 60 : 350));
+        await new Promise((r) => setTimeout(r, 60));
       }
     } catch (e) {
-      console.warn("TTS hatası, sessiz devam", e);
-      await new Promise((r) => setTimeout(r, 300));
+      console.warn("TTS hatası, tarayıcı sesiyle devam", e);
+      await browserSpeak(text, role, ark?.ses.rate ?? 1, ark?.ses.pitch ?? 1);
     }
     while (this.pauseFlag && !this.stopFlag) await new Promise((r) => setTimeout(r, 200));
     if (this.live) this.live.speaking = null;
@@ -130,7 +134,7 @@ class Controller {
     this.changed([], false);
   }
 
-  stop() { this.stopFlag = true; stopAudio(); if (this.batch) { this.batch.status = "durduruldu"; this.repo.upsertRun(this.batch); } this.changed([], false); }
+  stop() { this.stopFlag = true; stopAudio(); if (typeof window !== "undefined") window.speechSynthesis?.cancel(); if (this.batch) { this.batch.status = "durduruldu"; this.repo.upsertRun(this.batch); } this.changed([], false); }
   togglePause() { this.pauseFlag = !this.pauseFlag; this.changed([], false); }
 
   // ------------------------------------------------------------------ değerlendirme
@@ -220,6 +224,26 @@ class Controller {
     }
     this.repo.upsertRun(run); this.changed([], false);
   }
+}
+
+/** Motor yoksa yedek: tarayıcının Türkçe sesi (Web Speech API; cihazdaki sesler tercih edilir). */
+function browserSpeak(text: string, role: "asena" | "musteri", rate: number, pitch: number): Promise<void> {
+  const clean = text.replace(/\[[^\]]*\]/g, "").trim();
+  if (typeof window === "undefined" || !("speechSynthesis" in window) || !clean) return new Promise((r) => setTimeout(r, 400));
+  return new Promise((resolve) => {
+    const voices = speechSynthesis.getVoices().filter((v) => v.lang.toLowerCase().startsWith("tr"));
+    const local = voices.filter((v) => v.localService);
+    const pool = local.length ? local : voices;
+    const u = new SpeechSynthesisUtterance(clean);
+    u.lang = "tr-TR";
+    if (pool.length) u.voice = role === "asena" ? pool[0] : pool[pool.length > 1 ? 1 : 0];
+    u.rate = role === "asena" ? 1.05 : rate;
+    u.pitch = role === "asena" ? 1.05 : (pool.length > 1 ? 1 : 0.75) * pitch;
+    const done = () => { clearTimeout(t); resolve(); };
+    const t = setTimeout(done, 4000 + clean.length * 90);
+    u.onend = done; u.onerror = done;
+    speechSynthesis.speak(u);
+  });
 }
 
 let ctrl: Controller | null = null;

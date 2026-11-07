@@ -45,7 +45,7 @@ export default function Console() {
   const [tab, setTab] = useState<Tab>("Panel");
   const [h, setH] = useState<Health | { error: string } | null>(null);
   const settings = a.repo.settings();
-  const refresh = async () => setH(await health(settings.engine));
+  const refresh = async () => { const r = await health(settings.engine); a.engineHealthy = !("error" in r) && r.paired; setH(r); };
   useEffect(() => { void refresh(); const t = setInterval(refresh, 8000); return () => clearInterval(t); }, [settings.engine.token]); // eslint-disable-line
 
   const live = a.live;
@@ -99,7 +99,7 @@ export default function Console() {
 
 function EngineBadge({ h, onRetry }: { h: Health | { error: string } | null; onRetry: () => void }) {
   if (!h) return <Badge variant="outline">Motor yoklanıyor…</Badge>;
-  if ("error" in h) return <button onClick={onRetry}><Badge variant="destructive">Yerel motor bulunamadı · {h.error}</Badge></button>;
+  if ("error" in h) return <button onClick={onRetry}><Badge variant="outline">Motorsuz mod · tarayıcı sesi</Badge></button>;
   if (!h.paired) return <Badge variant="destructive">Motor bağlı, eşleşmemiş</Badge>;
   const tts = h.tts?.map((t) => `${t.name} ${t.version}${t.status === "hazir" ? "" : ` (${t.status})`}`).join(" · ");
   return <Badge className="bg-emerald-600 text-white">Yerel motor bağlı · {tts} · {h.llm?.selected === "alibayram/kumru:latest" ? "Kumru-2B" : h.llm?.selected ?? h.llm?.status}</Badge>;
@@ -626,7 +626,7 @@ function SettingsView({ h, onRetry }: { h: Health | { error: string } | null; on
         <div className="space-y-2 text-xs">
           <div>Adres: <Input className="h-7" value={s.engine.url} onChange={(e) => a.repo.patchSettings((x) => { x.engine.url = e.target.value; })} /></div>
           <div>Eşleşme: <b>{s.engine.token ? "token kayıtlı" : "eşleşmemiş"}</b></div>
-          {(!h || "error" in h) && <div className="rounded bg-amber-50 p-2">Yerel motor bulunamadı. Terminalde çalıştırın:<pre className="mt-1 rounded bg-zinc-900 p-2 text-zinc-100">cd ~/Desktop/Asena/engine && uv run asena-engine</pre>Canlı sitedeyseniz Chrome'un yerel ağ erişim iznini kontrol edin (chrome://settings/content → bu site → Yerel ağ erişimi: İzin ver) ve <code>ASENA_ALLOWED_ORIGINS</code>'e <code>{origin}</code> ekleyin.</div>}
+          {(!h || "error" in h) && <div className="rounded bg-amber-50 p-2">Yerel motor bulunamadı. Terminalde çalıştırın:<pre className="mt-1 rounded bg-zinc-900 p-2 text-zinc-100">cd ~/Projects/asena/engine && uv run asena-engine</pre>Canlı sitedeyseniz Chrome'un yerel ağ erişim iznini kontrol edin (chrome://settings/content → bu site → Yerel ağ erişimi: İzin ver) ve <code>ASENA_ALLOWED_ORIGINS</code>'e <code>{origin}</code> ekleyin.</div>}
           {h && !("error" in h) && !h.paired && <div className="rounded bg-amber-50 p-2">Motoru eşleştirin: terminaldeki <code>{origin}/eslestir#t=…</code> bağlantısını açın ya da token'ı yapıştırın (<code>cat ~/.asena/token</code>):<div className="mt-1 flex gap-1"><Input className="h-7" value={tok} onChange={(e) => setTok(e.target.value)} /><Button size="xs" onClick={() => { a.repo.patchSettings((x) => { x.engine.token = tok.trim(); }); onRetry(); }}>Kaydet</Button></div></div>}
           <pre className="max-h-64 overflow-auto rounded bg-muted p-2">{JSON.stringify(h, null, 1)}</pre>
         </div>

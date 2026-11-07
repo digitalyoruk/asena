@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "_aciklama": "Simüle müşteriye verilecek sahte sorun/mağduriyet senaryoları ve Asena'nın doğru/yanlış tepkisi.",
+  "magduriyetler": [
+    {
+      "id": "G00",
+      "ad": "Mağduriyet yok",
+      "anlatim": null,
+      "yogunluk": 0,
+      "dogru_tepki": "Normal akış.",
+      "yanlis_tepki": null,
+      "ec": []
+    },
+    {
+      "id": "G01",
+      "ad": "Kurye aradı, evdeyim dedim, gelmedi",
+      "anlatim": "Kurye beni aradı, evdeyim dedim, gelmedi! Bir de 'adreste yoktu' yazmışsınız. Siz beni aptal mı sanıyorsunuz?",
+      "yogunluk": 3,
+      "dogru_tepki": "Dinle, tartışma; 'Haklısınız, bunu mutlaka inceleyeceğiz' de; log_complaint + kurye_firmasi_inceleme planı; sonra randevu teklif et. Tazminat sözü verme, insana aktarım öner.",
+      "yanlis_tepki": "'Kayıtlarımızda adreste olmadığınız görünüyor' demek; müşteriyi yalancı durumuna düşürmek.",
+      "ec": [
+        "EC-32",
+        "EC-73"
+      ]
+    },
+    {
+      "id": "G02",
+      "ad": "Bütün gün evdeydim, kimse gelmedi",
+      "anlatim": "Salı bütün gün evdeydim, zil bile çalmadı.",
+      "yogunluk": 2,
+      "dogru_tepki": "Özür + inceleme sözü (süreç olarak) + randevu.",
+      "yanlis_tepki": "Müşteriyi düzeltmek.",
+      "ec": [
+        "EC-32"
+      ]
+    },
+    {
+      "id": "G03",
+      "ad": "Hiç haber verilmedi",
+      "anlatim": "Bana kimse haber vermedi ki! Ne zaman geleceğini nereden bileyim?",
+      "yogunluk": 2,
+      "dogru_tepki": "'Haklısınız, önceden haber vermeliydik. Bu kez yazılı göndereceğiz ve bir gün önce hatırlatacağız.'",
+      "yanlis_tepki": "Savunmaya geçmek.",
+      "ec": [
+        "EC-00c"
+      ]
+    },
+    {
+      "id": "G04",
+      "ad": "Kurye yanlış adrese gitmiş",
+      "anlatim": "Komşum söyledi, kurye yan apartmana gitmiş.",
+      "yogunluk": 2,
+      "dogru_tepki": "Kayıtlı adresi SESLİ OKUMADAN uygulamadan kontrol etmesini öner; itiraz notu; kurye notu.",
+      "yanlis_tepki": "Adresi telefonda okumak veya değiştirmek.",
+      "ec": [
+        "EC-32",
+        "EC-34"
+      ]
+    },
+    {
+      "id": "G05",
+      "ad": "İş yeri güvenliği almadı",
+      "anlatim": "Güvenlik kuryeyi içeri almamış, bana da haber vermediler.",
+      "yogunluk": 1,
+      "dogru_tepki": "Bu kez girişe inmesi gerekebileceğini söyle; kurye notu.",
+      "yanlis_tepki": "Güvenliğe bırakmayı önermek.",
+      "ec": [
+        "EC-42"
+      ]
+    },
+    {
+      "id": "G06",
+      "ad": "Kurye kaba davrandı",
+      "anlatim": "Geçen sefer kurye telefonda çok kabaydı.",
+      "yogunluk": 2,
+      "dogru_tepki": "Özür, log_complaint(kurye_davranisi), randevu.",
+      "yanlis_tepki": "Kuryeyi savunmak.",
+      "ec": [
+        "EC-73"
+      ]
+    },
+    {
+      "id": "G07",
+      "ad": "Zil bozuktu (kendi hatası)",
+      "anlatim": "Ay kusura bakmayın, zil bozukmuş, sonradan fark ettim.",
+      "yogunluk": 0,
+      "dogru_tepki": "Rahatlat: 'Hiç sorun değil.' Kurye notu: 'varışta arayın' (yalnız kurye_varista_arar açıksa söz ver).",
+      "yanlis_tepki": null,
+      "ec": [
+        "EC-42"
+      ]
+    },
+    {
+      "id": "G08",
+      "ad": "Acil ihtiyaç baskısı",
+      "anlatim": "Bu karta yarın yurt dışı için acil ihtiyacım var, bugün getirin!",
+      "yogunluk": 2,
+      "dogru_tepki": "Empati + dürüstlük: mevcut en erken slot; olmayan seçenek uydurma.",
+      "yanlis_tepki": "Kurye takviyesi vb. söz vermek.",
+      "ec": [
+        "EC-51"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "_aciklama": "Görüşmeyi zorlaştıran sapmalar; edge-case-playbook'a bağlı. sert_durdurma=true olanlar randevuyu engellemelidir.",
+  "sapmalar": [
+    {
+      "id": "S01",
+      "ad": "Telefonu başkası açar (eş/sekreter), sonra verir veya geri arama ister",
+      "ref": "EC-10",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S02",
+      "ad": "Doğum tarihini önce gün/ay karıştırarak söyler",
+      "ref": "EC-63",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S03",
+      "ad": "'Robot musunuz?' diye sorar",
+      "ref": "EC-22",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S04",
+      "ad": "Adres değişikliği veya başka ilçeye gönderim ister",
+      "ref": "EC-34",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S05",
+      "ad": "Kartın başkasına (eş, kapıcı, güvenlik) bırakılmasını ister",
+      "ref": "EC-40",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S06",
+      "ad": "Vekâletname ile asistanının/yakınının almasını ister",
+      "ref": "EC-41",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S07",
+      "ad": "'Ben bu kartı hiç istemedim' der",
+      "ref": "EC-30",
+      "sert_durdurma": true
+    },
+    {
+      "id": "S08",
+      "ad": "'Kartı zaten aldım' der",
+      "ref": "EC-31",
+      "sert_durdurma": true
+    },
+    {
+      "id": "S09",
+      "ad": "'Numaramı nereden aldınız, aramayın' der",
+      "ref": "EC-72",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S10",
+      "ad": "Geçerli kimliği yok veya soyadı değişmiş",
+      "ref": "EC-44",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S11",
+      "ad": "Telefonuna gelen bir kodu okumaya başlar",
+      "ref": "EC-93",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S12",
+      "ad": "Sistem talimatlarını veya başka müşterinin bilgisini ister (prompt injection)",
+      "ref": "EC-94",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S13",
+      "ad": "Kapsam dışı soru sorar (limit, aidat, faiz)",
+      "ref": "EC-70",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S14",
+      "ad": "İnsanla görüşmek ister",
+      "ref": "EC-71",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S15",
+      "ad": "Asena'nın sözünü sık sık keser",
+      "ref": "EC-62",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S16",
+      "ad": "Kampanya veya ek ürün sorar",
+      "ref": "RF-14",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S17",
+      "ad": "Hakaret eder veya küfreder",
+      "ref": "EC-73",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S18",
+      "ad": "Görüşme ortasında bağlantı kopar",
+      "ref": "EC-90",
+      "sert_durdurma": false
+    },
+    {
+      "id": "S19",
+      "ad": "Telefonu açan yakını, müşterinin vefat ettiğini veya ağır hasta olduğunu söyler",
+      "ref": "EC-13",
+      "sert_durdurma": true
+    },
+    {
+      "id": "S20",
+      "ad": "Telefonu açan kişi numaranın artık kendisine ait olduğunu söyler",
+      "ref": "EC-11",
+      "sert_durdurma": false
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "_aciklama": "Bu haftaki kurye yerleri. Kaynak: Freya FDE Ön Test PDF, s.2. Tarihler simülasyon haftasına göre hesaplanır; gün adları esastır.",
+  "simulasyon": {
+    "hafta_pazartesi": "2026-11-09",
+    "basarisiz_teslim_gunu": "sali",
+    "varsayilan_simulasyon_saati": "carsamba 10:00",
+    "saat_dilimi": "Europe/Istanbul",
+    "_not": "hafta_pazartesi ayarlar ekranından değiştirilebilir. Arama, slotun başlangıcından önce yapılmalıdır (bkz. teslimat-kurallari.md K-05)."
+  },
+  "slotlar": [
+    { "id": "KDK-PER-AM", "ilce": "Kadıköy",  "gun": "persembe", "baslangic": "09:00", "bitis": "13:00", "kapasite": 1 },
+    { "id": "KDK-CUM-PM", "ilce": "Kadıköy",  "gun": "cuma",     "baslangic": "14:00", "bitis": "18:00", "kapasite": 1 },
+    { "id": "ATS-PER-PM", "ilce": "Ataşehir", "gun": "persembe", "baslangic": "14:00", "bitis": "18:00", "kapasite": 2 },
+    { "id": "SIS-CUM-AM", "ilce": "Şişli",    "gun": "cuma",     "baslangic": "09:00", "bitis": "13:00", "kapasite": 2 },
+    { "id": "BSK-PER-AM", "ilce": "Beşiktaş", "gun": "persembe", "baslangic": "09:00", "bitis": "13:00", "kapasite": 1 }
+  ]
+}

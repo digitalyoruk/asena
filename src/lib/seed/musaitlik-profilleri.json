@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "_aciklama": "Müsaitlik profilleri: simüle müşterinin gizli gerçeği. Teklif edilen slot, pencerelerle kesişimine göre kabul/ret/kısmi olarak değerlendirilir.",
+  "profiller": [
+    {
+      "id": "P1",
+      "ad": "Her zaman uygun",
+      "pencereler": [
+        {
+          "gunler": [
+            "pzt",
+            "sal",
+            "car",
+            "per",
+            "cum",
+            "cmt"
+          ],
+          "baslangic": "08:00",
+          "bitis": "21:00"
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "ad": "Yalnız sabah",
+      "pencereler": [
+        {
+          "gunler": [
+            "pzt",
+            "sal",
+            "car",
+            "per",
+            "cum"
+          ],
+          "baslangic": "08:00",
+          "bitis": "13:00"
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "ad": "Yalnız öğleden sonra",
+      "pencereler": [
+        {
+          "gunler": [
+            "pzt",
+            "sal",
+            "car",
+            "per",
+            "cum"
+          ],
+          "baslangic": "13:00",
+          "bitis": "19:00"
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "ad": "Hafta içi gündüz yok",
+      "pencereler": [
+        {
+          "gunler": [
+            "pzt",
+            "sal",
+            "car",
+            "per",
+            "cum"
+          ],
+          "baslangic": "18:30",
+          "bitis": "21:00"
+        },
+        {
+          "gunler": [
+            "cmt"
+          ],
+          "baslangic": "10:00",
+          "bitis": "18:00"
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "ad": "Kısmi (sabah 11'e kadar)",
+      "pencereler": [
+        {
+          "gunler": [
+            "pzt",
+            "sal",
+            "car",
+            "per",
+            "cum"
+          ],
+          "baslangic": "08:00",
+          "bitis": "11:00"
+        }
+      ]
+    },
+    {
+      "id": "P6",
+      "ad": "Perşembe yok",
+      "pencereler": [
+        {
+          "gunler": [
+            "pzt",
+            "sal",
+            "car",
+            "cum"
+          ],
+          "baslangic": "08:00",
+          "bitis": "20:00"
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "ad": "Cuma yok",
+      "pencereler": [
+        {
+          "gunler": [
+            "pzt",
+            "sal",
+            "car",
+            "per"
+          ],
+          "baslangic": "08:00",
+          "bitis": "20:00"
+        }
+      ]
+    }
+  ]
+}

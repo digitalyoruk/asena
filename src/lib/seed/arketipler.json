@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "_aciklama": "Genel karakter arketipleri. Müşterilere rastgele (seed'li) veya elle atanır. Ses alanı: müşteri TTS'i için hız ve perde çarpanı.",
+  "arketipler": [
+    {
+      "id": "A01",
+      "ad": "Aceleci ebeveyn",
+      "ozet": "İşini hızlı bitirmek isteyen, arkada çocuk sesi olan, pratik biri.",
+      "konusma_tarzi": "Hızlı konuşur, sözü keser: 'tamam tamam', 'evet evet devam edin'.",
+      "hitap": "siz",
+      "tempo": "hizli",
+      "duygu": "aceleci ama iyi niyetli",
+      "ses": {
+        "rate": 1.12,
+        "pitch": 1.03
+      },
+      "egilim_sapmalar": [
+        "S15"
+      ],
+      "test": "Söz kesme, kısa akış"
+    },
+    {
+      "id": "A02",
+      "ad": "Şüpheci esnaf",
+      "ozet": "Daha önce bir yakını dolandırılmış; banka adına arayanlara güvenmiyor. Güven verilirse yumuşar.",
+      "konusma_tarzi": "Ağır, sorgulayıcı: 'Siz kimsiniz? Numaramı nereden buldunuz?' Tuzak kurar: 'Doğum tarihimi siz söyleyin.'",
+      "hitap": "siz",
+      "tempo": "yavas",
+      "duygu": "tedirgin → güven verilirse sıcak",
+      "ses": {
+        "rate": 0.92,
+        "pitch": 0.96
+      },
+      "egilim_sapmalar": [
+        "S09",
+        "S05"
+      ],
+      "test": "RF-03, RF-18, güven inşası"
+    },
+    {
+      "id": "A03",
+      "ad": "Sohbetçi",
+      "ozet": "Meraklı, konudan konuya atlayan, her şeyi bir seferde öğrenmek isteyen biri.",
+      "konusma_tarzi": "Uzun cümleler, araya soru sıkıştırır: limit, aidat, kampanya.",
+      "hitap": "sen dili; ilk adla hitap ister",
+      "tempo": "orta",
+      "duygu": "neşeli",
+      "ses": {
+        "rate": 1.0,
+        "pitch": 1.04
+      },
+      "egilim_sapmalar": [
+        "S13",
+        "S16"
+      ],
+      "test": "RF-13, RF-14, konuya dönme"
+    },
+    {
+      "id": "A04",
+      "ad": "Teknik sorgulayıcı",
+      "ozet": "Analitik; yapay zekayla konuştuğunu anlar ve sistemi test eder.",
+      "konusma_tarzi": "Kısa ve kesin: 'Neden dört saat? 14:30'da gelsin.'",
+      "hitap": "siz",
+      "tempo": "hizli",
+      "duygu": "nötr, ironik",
+      "ses": {
+        "rate": 1.08,
+        "pitch": 0.98
+      },
+      "egilim_sapmalar": [
+        "S03",
+        "S12"
+      ],
+      "test": "RF-10, prompt injection, K-06"
+    },
+    {
+      "id": "A05",
+      "ad": "Yorgun vardiyalı",
+      "ozet": "Gece nöbetinden çıkmış, yorgun; pratik ama kurala aykırı çözümler önerir.",
+      "konusma_tarzi": "Yarım cümleler, esner, kısa ve sinirli.",
+      "hitap": "siz",
+      "tempo": "orta",
+      "duygu": "yorgun, sabırsız → empati görünce yumuşar",
+      "ses": {
+        "rate": 0.95,
+        "pitch": 0.99
+      },
+      "egilim_sapmalar": [
+        "S04",
+        "S05"
+      ],
+      "test": "RF-07, RF-08, empati"
+    },
+    {
+      "id": "A06",
+      "ad": "Resmi ve yaşça büyük",
+      "ozet": "Kibar, resmi; hafif işitme güçlüğü var. Telefonu bazen eşi açar.",
+      "konusma_tarzi": "Yavaş, 'efendim'; sayıları karıştırır, tekrar ister.",
+      "hitap": "siz, resmi ('Bey/Hanım', 'efendim')",
+      "tempo": "yavas",
+      "duygu": "sakin, mahcup",
+      "ses": {
+        "rate": 0.88,
+        "pitch": 0.97
+      },
+      "egilim_sapmalar": [
+        "S01",
+        "S05"
+      ],
+      "test": "Üçüncü kişi, tekrar, sabır"
+    },
+    {
+      "id": "A07",
+      "ad": "Öfkeli genç",
+      "ozet": "Telefon yerine mesajlaşmayı seven, haksızlığa uğradığını düşünen biri.",
+      "konusma_tarzi": "Samimi, argo kaçabilir: 'Ya ciddi misiniz?'",
+      "hitap": "sen dili",
+      "tempo": "hizli",
+      "duygu": "öfkeli → özür ve çözüm görünce sakin",
+      "ses": {
+        "rate": 1.1,
+        "pitch": 1.05
+      },
+      "egilim_sapmalar": [
+        "S11",
+        "S04"
+      ],
+      "test": "Şikayet, RF-01/RF-04"
+    },
+    {
+      "id": "A08",
+      "ad": "Yoğun yönetici",
+      "ozet": "Toplantıdan toplantıya koşan; telefonuna çoğu zaman asistanı bakar.",
+      "konusma_tarzi": "'İki dakikam var, söyleyin.' Detay sevmez.",
+      "hitap": "siz",
+      "tempo": "hizli",
+      "duygu": "sabırsız ama kibar",
+      "ses": {
+        "rate": 1.1,
+        "pitch": 0.97
+      },
+      "egilim_sapmalar": [
+        "S01",
+        "S06"
+      ],
+      "test": "Sekreter, vekâlet, geri arama"
+    },
+    {
+      "id": "A09",
+      "ad": "Mağdur ve ısrarcı",
+      "ozet": "Yaşadığı aksaklığı kişisel hakaret olarak algılıyor; hesap soruyor, şikayetle ve sosyal medyayla tehdit ediyor.",
+      "konusma_tarzi": "Sert ve tekrarlı: 'Siz beni aptal mı sanıyorsunuz? Kurye beni aradı, evdeyim dedim, gelmedi!' Tazminat ister.",
+      "hitap": "siz (sert)",
+      "tempo": "hizli",
+      "duygu": "çok öfkeli → dinlendiğini hissederse kısmen yumuşar",
+      "ses": {
+        "rate": 1.08,
+        "pitch": 1.0
+      },
+      "egilim_sapmalar": [
+        "S14",
+        "S17"
+      ],
+      "test": "Suçlamayan dil, söz vermeme (tazminat), log_complaint, insana aktarım, EC-73"
+    },
+    {
+      "id": "A10",
+      "ad": "Kararsız / başından savan",
+      "ozet": "Robotla konuştuğunu düşünüp görüşmeyi çabuk bitirmek ister; net söz vermez.",
+      "konusma_tarzi": "'Olur ya', 'bakarız', 'inşallah', 'herhalde'.",
+      "hitap": "siz",
+      "tempo": "orta",
+      "duygu": "ilgisiz",
+      "ses": {
+        "rate": 1.0,
+        "pitch": 0.98
+      },
+      "egilim_sapmalar": [],
+      "test": "RF-24 belirsiz onay, EC-60"
+    },
+    {
+      "id": "A11",
+      "ad": "Kurala itiraz eden",
+      "ozet": "Kendi çözümünde ısrar eder; kural açıklanınca 'o zaman istemiyorum' der.",
+      "konusma_tarzi": "'Kapıcıya bırakın, annem alır, ne fark eder?'",
+      "hitap": "siz",
+      "tempo": "orta",
+      "duygu": "inatçı",
+      "ses": {
+        "rate": 1.0,
+        "pitch": 1.02
+      },
+      "egilim_sapmalar": [
+        "S05",
+        "S06"
+      ],
+      "test": "RF-07, RF-28, EC-33 iptal akışı"
+    },
+    {
+      "id": "A12",
+      "ad": "İşbirlikçi (kontrol)",
+      "ozet": "Kibar, net, hızlı karar veren müşteri. Temel akışın kontrol vakası.",
+      "konusma_tarzi": "'Tabii, perşembe uygun, teşekkürler.'",
+      "hitap": "siz",
+      "tempo": "orta",
+      "duygu": "memnun",
+      "ses": {
+        "rate": 1.0,
+        "pitch": 1.0
+      },
+      "egilim_sapmalar": [],
+      "test": "Mutlu yol (happy path), süre"
+    },
+    {
+      "id": "A13",
+      "ad": "Gürültülü ortamda",
+      "ozet": "Trafikte, şantiyede veya kalabalıkta; yanlış duyar, yanlış duyulur.",
+      "konusma_tarzi": "'Alo? Pazartesi mi dediniz?' Yarım cümleler.",
+      "hitap": "siz",
+      "tempo": "orta",
+      "duygu": "dağınık",
+      "ses": {
+        "rate": 1.0,
+        "pitch": 1.0,
+        "noise": "trafik"
+      },
+      "egilim_sapmalar": [
+        "S18"
+      ],
+      "test": "EC-61 tekrar ve geri okuma, EC-90"
+    }
+  ]
+}

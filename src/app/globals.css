@@ -49,6 +49,13 @@
 }
 
 :root {
+  --asena-bg: #e8efe9;
+  --asena-ink: #0f2a26;
+  --asena-muted: #3d5a54;
+  --asena-soft: #6b857e;
+  --asena-accent: #c4a26b;
+  --asena-glow: #7fb59a;
+
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -126,5 +133,92 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+.asena-atmosphere {
+  background:
+    radial-gradient(ellipse 80% 55% at 12% 18%, color-mix(in oklab, var(--asena-glow) 35%, transparent), transparent 60%),
+    radial-gradient(ellipse 60% 45% at 88% 72%, color-mix(in oklab, var(--asena-accent) 22%, transparent), transparent 55%),
+    linear-gradient(165deg, #f3f7f3 0%, var(--asena-bg) 48%, #d9e6de 100%);
+  animation: asena-drift 18s ease-in-out infinite alternate;
+}
+
+.asena-routes {
+  opacity: 0.22;
+  background-image:
+    linear-gradient(115deg, transparent 48%, color-mix(in oklab, var(--asena-ink) 18%, transparent) 49%, transparent 51%),
+    linear-gradient(155deg, transparent 62%, color-mix(in oklab, var(--asena-ink) 12%, transparent) 63%, transparent 65%),
+    radial-gradient(circle at 72% 28%, color-mix(in oklab, var(--asena-ink) 16%, transparent) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 34% 58%, color-mix(in oklab, var(--asena-ink) 16%, transparent) 0 1.5px, transparent 2px),
+    radial-gradient(circle at 58% 76%, color-mix(in oklab, var(--asena-ink) 16%, transparent) 0 1.5px, transparent 2px);
+  mask-image: linear-gradient(to bottom, transparent, black 18%, black 78%, transparent);
+  animation: asena-route-shift 22s linear infinite;
+}
+
+.asena-fade-in {
+  animation: asena-fade 0.9s ease-out both;
+}
+
+.asena-rise {
+  animation: asena-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.asena-delay-1 {
+  animation-delay: 0.12s;
+}
+
+.asena-delay-2 {
+  animation-delay: 0.24s;
+}
+
+.asena-delay-3 {
+  animation-delay: 0.36s;
+}
+
+@keyframes asena-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes asena-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes asena-drift {
+  from {
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.04) translate3d(-1.5%, 1%, 0);
+  }
+}
+
+@keyframes asena-route-shift {
+  from {
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: 40px -20px, -30px 25px, 0 0, 0 0, 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .asena-atmosphere,
+  .asena-routes,
+  .asena-fade-in,
+  .asena-rise {
+    animation: none;
   }
 }

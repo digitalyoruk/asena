@@ -1,67 +1,42 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Play } from "lucide-react";
+import { AsenaLogo } from "@/components/asena-logo";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <div className="relative flex min-h-full flex-1 flex-col overflow-hidden bg-[var(--asena-bg)] text-[var(--asena-ink)]">
+      <div className="pointer-events-none absolute inset-0 asena-atmosphere" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 asena-routes" aria-hidden />
+
+      <header className="relative z-10 px-6 pt-8 sm:px-10 lg:px-16">
+        <AsenaLogo className="asena-fade-in text-[var(--asena-ink)]" />
+      </header>
+
+      <main className="relative z-10 flex flex-1 flex-col justify-end px-6 pb-16 pt-24 sm:px-10 sm:pb-20 sm:pt-28 lg:px-16 lg:pb-24">
+        <div className="max-w-2xl">
+          <h1 className="asena-rise font-[family-name:var(--font-display)] text-[clamp(2.75rem,8vw,5.5rem)] leading-[0.95] tracking-[-0.04em] text-[var(--asena-ink)]">
+            asena
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="asena-rise asena-delay-1 mt-6 text-[clamp(1.15rem,2.4vw,1.45rem)] leading-relaxed text-[var(--asena-muted)]">
+            Bankalar için kurye optimizasyonu ve AI ses asistanı.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          <p className="asena-rise asena-delay-2 mt-5 max-w-xl text-[0.98rem] leading-relaxed text-[var(--asena-soft)]">
+            Türk mitolojisinde Asena, soyu yok olmaktan kurtaran ve kabileye yol
+            gösteren efsanevi dişi kurttur. Biz de bankacılığın Asenasıyız:
+            operasyonu koruyan, yolu açan rehber.
+          </p>
+          <div className="asena-rise asena-delay-3 mt-10 flex flex-wrap items-center gap-4">
+            <Link
+              href="/demo"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[var(--asena-ink)] px-7 text-[0.95rem] font-medium text-[var(--asena-bg)] transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]"
+            >
+              <Play className="size-4 fill-current" aria-hidden />
+              Canlı Dene
+            </Link>
+            <span className="text-sm text-[var(--asena-soft)]">
+              Rota, Ses, Operasyon
+            </span>
+          </div>
         </div>
       </main>
     </div>
